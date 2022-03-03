@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import 'assets/styles/index.css';
 import { HashRouter as Router } from 'react-router-dom';
 import ScrollToTop from 'utils/ScrollToTop';
 
