@@ -1,14 +1,26 @@
+import HeroBanner from "components/home/HeroBanner";
+import ImageNav from "components/common/ImageNav";
 import Page from "../components/layout/Page";
+import { $navItems } from "utils/Constants";
+
+const heroItem = {
+  title: "XX99 Mark II Headphones",
+  desc: "Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.",
+  imageSet: {
+    mobile: require('assets/images/home/mobile/image-header.jpg'),
+    tablet: require('assets/images/home/tablet/image-header.jpg'),
+    desktop: require('assets/images/home/desktop/image-hero.jpg'),
+  }
+}
 
 const Homepage = () => {
 
   return (
     <Page title="Audiophile Home">
-      
-      <section>
-        <div className="container mx-auto px-5">
-          <h1 className="text-primary font-bold text-4xl leading-15 my-4 tracking-ap-1.5">Homepage</h1>
-          <p className="leading-normal">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, nulla quaerat enim cumque eligendi atque laboriosam eveniet. Porro doloribus sit iste deleniti, soluta facere fugiat.</p>
+      <HeroBanner item={heroItem} />
+      <section className="my-4">
+        <div className="container mx-auto">
+          <ImageNav items={$navItems} />
         </div>
       </section>
     </Page>

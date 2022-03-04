@@ -7,7 +7,7 @@ const Page = ({ classes, children, title = "Audiophile" }) => {
   return (
     <div className="page leading-normal">
       <Header />
-      <main className={`main ${classes ? classes : ''}`}>
+      <main className={`main pt-[90px] lg:pt-0 ${classes ? classes : ''}`}>
         {children}
       </main>
       <Footer />
