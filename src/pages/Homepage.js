@@ -61,6 +61,26 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+      <section className="my-8 overflow-hidden lg:my-20">
+        <div className="container mx-auto px-5 lg:px-0">
+          <div className="flex flex-col sm:flex-row relative justify-between gap-4">
+            <ImageSet 
+              imageSet={{
+                desktop: require('assets/images/home/desktop/image-earphones-yx1.jpg'),
+                tablet: require('assets/images/home/tablet/image-earphones-yx1.jpg'),
+                mobile: require('assets/images/home/mobile/image-earphones-yx1.jpg'),
+                title: 'YX1 Earphones'
+              }}
+
+              classes="w-full grow rounded-lg overflow-hidden w-full sm:w-1/2"
+            />
+            <div className="grow flex flex-col py-8 gap-4 bg-darkgray rounded-lg px-8 w-full sm:w-1/2 justify-center lg:pl-32">
+              <h2 className="uppercase leading-10 text-xl my-4 tracking-ap-2 font-bold">YX1 Earphones</h2>
+              <Button to="/" classes="text-black text-xs bg-transparent border-2 border-black hover:bg-black hover:text-white mr-auto">See product</Button>
+            </div>
+          </div>
+        </div>
+      </section>
     </Page>
   )
 }
