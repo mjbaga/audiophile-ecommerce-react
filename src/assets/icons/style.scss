@@ -1,0 +1,55 @@
+@import "variables";
+
+@font-face {
+  font-family: '#{$icomoon-font-family}';
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?n8budr');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?n8budr#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?n8budr') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?n8budr') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?n8budr##{$icomoon-font-family}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$icomoon-font-family}' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-facebook {
+  &:before {
+    content: $icon-icon-facebook; 
+  }
+}
+.icon-instagram {
+  &:before {
+    content: $icon-icon-instagram; 
+  }
+}
+.icon-pinterest {
+  &:before {
+    content: $icon-icon-pinterest; 
+  }
+}
+.icon-twitter {
+  &:before {
+    content: $icon-icon-twitter; 
+  }
+}
+.icon-youtube {
+  &:before {
+    content: $icon-icon-youtube; 
+  }
+}
+
