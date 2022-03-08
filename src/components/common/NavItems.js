@@ -1,6 +1,8 @@
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const NavItems = ({ navItems, id, classes, menuClass }) => {
+
   return (
     <nav className={`${classes ? classes : ''}`}>
       <ul id={id ? id : ''} className={`flex gap-2 md:gap-8 ${menuClass ? menuClass : ''}`}>
@@ -21,4 +23,4 @@ const NavItems = ({ navItems, id, classes, menuClass }) => {
   )
 }
 
-export default NavItems;
+export default React.memo(NavItems);

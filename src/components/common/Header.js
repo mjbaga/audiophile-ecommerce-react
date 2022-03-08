@@ -2,16 +2,17 @@ import ImageNav from 'components/common/ImageNav';
 import { Link } from 'react-router-dom';
 import logo from 'assets/images/shared/desktop/logo.svg';
 import cartIcon from 'assets/images/shared/desktop/icon-cart.svg';
-import MainNav from './MainNav';
+import menuIcon from 'assets/images/shared/tablet/icon-hamburger.svg';
 import { useState } from 'react';
 import { $navItems } from 'utils/Constants';
+import NavItems from 'components/common/NavItems';
 
 const Header = () => {
   const [menuIsActive, setMenuIsActive] = useState(false);
 
   const menuClickHandler = () => {
-    setMenuIsActive(!menuIsActive);
-  }
+    setMenuIsActive(prevMenuIsActive => !prevMenuIsActive);
+  };
 
   menuIsActive ? document.body.classList.add('menu-open') : document.body.classList.remove('menu-open');
 
@@ -24,10 +25,19 @@ const Header = () => {
             <span className="sr-only">Link to home</span>
             <img src={logo} className="w-min" alt="Audiophile" />
           </Link>
-          <MainNav
-            navItems={$navItems} 
-            onMenuBtnClick={menuClickHandler}
+          <button 
+            className="bg-transparent border-0 order-1 sm:grow-1 lg:hidden"
+            aria-controls="primary-navigation"
+            aria-expanded={menuIsActive ? 'true' : 'false'}
+            onClick={menuClickHandler} 
+          >
+            <span className="sr-only">Menu Button</span>
+            <img src={menuIcon} alt="Menu button" />
+          </button>
+          <NavItems
+            navItems={$navItems}
             id="primary-navigation"
+            classes="main-nav hidden lg:block order-2"
           />
           <button className="bg-transparent border-0 order-3">
             <span className="sr-only">Cart Button</span>
