@@ -1,6 +1,7 @@
+import { Fragment } from "react";
 import HeroBanner from "components/home/HeroBanner";
 import ImageNav from "components/common/ImageNav";
-import Page from "../components/layout/Page";
+// import Page from "components/layout/Page";
 import { $navItems } from "utils/Constants";
 import bgPattern from 'assets/images/home/desktop/pattern-circles.svg';
 import ImageSet from "components/common/ImageSet";
@@ -17,10 +18,11 @@ const heroItem = {
   }
 }
 
-const Homepage = () => {
+const Homepage = ({ title = "Audiophile" }) => {
+  document.title = title;
 
   return (
-    <Page title="Audiophile Home">
+    <Fragment>
       <HeroBanner item={heroItem} link="/" />
       <section className="my-4 lg:my-20">
         <div className="container mx-auto px-5 lg:px-0">
@@ -98,7 +100,7 @@ const Homepage = () => {
           </ImageTextPair>
         </div>
       </section>
-    </Page>
+    </Fragment>
   )
 }
 
