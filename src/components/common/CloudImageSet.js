@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import ImageSet from "components/common/ImageSet";
 import useCloudImage from "hooks/use-cloud-image";
+import LoadingSpinner from "components/layout/LoadingSpinner";
 
 const CloudImageSet = ({ title, imageSet, classes = "" }) => {
   const [imageSetUrl, setImageSetUrl] = useState({});
@@ -38,8 +39,9 @@ const CloudImageSet = ({ title, imageSet, classes = "" }) => {
 
   return (
     <Fragment>
-      {(imageSetUrl.desktop && imageSetUrl.tablet && imageSetUrl.mobile) && 
-        <ImageSet imageSet={imageSetUrl} title={title} classes={classes} />
+      {(imageSetUrl.desktop && imageSetUrl.tablet && imageSetUrl.mobile) ?
+        <ImageSet imageSet={imageSetUrl} title={title} classes={classes} /> :
+        <div className="relative w-[300px] aspect-square"><LoadingSpinner /></div>
       }
     </Fragment>
   )

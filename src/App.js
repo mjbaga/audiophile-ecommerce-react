@@ -1,21 +1,35 @@
+import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Homepage from 'pages/Homepage';
-import Categories from 'pages/Categories';
-import Category from 'pages/Category';
 import Page from 'components/layout/Page';
+import Homepage from 'pages/Homepage';
+import { lazyDelayed } from 'utils/CustomFunctions';
+import LoadingSpinner from 'components/layout/LoadingSpinner';
+
+const Categories = lazyDelayed(import('pages/Categories'));
+const Category = lazyDelayed(import('pages/Category'));
+const Product = lazyDelayed(import('pages/Product'));
 
 function App() {
 
   return (
     <div className="App">
-      <Routes>
-        <Route exact path="/" element={<Page />}>
-          <Route index element={<Homepage />} />
-          <Route path="categories" element={<Categories />}>
-            <Route path=":catSlug" element={<Category />} />
+      <Suspense 
+        fallback={
+          <div className="fixed w-full h-screen top-0 left-0 right-0 bottom-0 bg-black/25">
+            <LoadingSpinner />
+          </div>
+        }
+      >
+        <Routes>
+          <Route exact path="/" element={<Page />}>
+            <Route index element={<Homepage />} />
+            <Route path="categories" element={<Categories />}>
+              <Route path=":catSlug" element={<Category />} />
+            </Route>
+            <Route path="products/:productSlug" element={<Product />} />
           </Route>
-        </Route>
-      </Routes>
+        </Routes>
+      </Suspense>
     </div>
   );
 }
