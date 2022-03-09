@@ -1,10 +1,11 @@
-// import Button from "components/common/Button";
+import Button from "components/common/Button";
 import ImageTextPair from "components/common/ImageTextPair";
 import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductBySlug } from 'utils/Firebase-Api';
 import { currencyFormat, processToParagraphs } from "utils/CustomFunctions";
 import Gallery from "components/common/Gallery";
+import RelatedProducts from "components/common/RelatedProducts";
 
 const Product = () => {
   const [product, setProduct] = useState({});
@@ -36,7 +37,7 @@ const Product = () => {
           <section className="overflow-hidden my-8 md:my-12 lg:my-20">
             <div className="container mx-auto px-5 lg:px-0">
               <ImageTextPair 
-                classes="mb-24 md:flex-row" 
+                classes="mb-16 md:flex-row" 
                 key={product.id} 
                 cloud="true" 
                 title={product.name} 
@@ -48,6 +49,14 @@ const Product = () => {
                 <h1 className="uppercase leading-10 text-xl my-2 md:my-8 tracking-ap-2 font-bold md:text-4xl md:leading-11 md:max-w-md md:mx-auto lg:ml-0">{product.name}</h1>
                 <p className="text-black opacity-50 mt-2 mb-12">{product.description}</p>
                 <p className="font-bold text-md">{currencyFormat(product.price)}</p>
+                <div className="flex flex-row gap-4 py-4 mt-8">
+                  <div className="bg-lightgray flex gap-2 px-4 items-center">
+                    <button className="text-black/50 font-bold bg-transparent px-4 py-2 hover:text-primary duration-1000 transition">-</button>
+                    <span className="px-4 font-bold">1</span>
+                    <button className="text-black/50 font-bold bg-transparent px-4 py-2 hover:text-primary duration-1000 transition">+</button>
+                  </div>
+                  <Button type="button" classes="text-white bg-primary hover:bg-secondary">Add to cart</Button>
+                </div>
               </ImageTextPair>
             </div>
           </section>
@@ -68,6 +77,11 @@ const Product = () => {
           <section className="overflow-hidden my-8 md:my-12 lg:my-20">
             <div className="container mx-auto px-5 lg:px-0">
               <Gallery imageGallery={product.gallery} />
+            </div>
+          </section>
+          <section className="overflow-hidden my-8 md:my-12 lg:my-20">
+            <div className="container mx-auto px-5 lg:px-0">
+              <RelatedProducts relatedItems={product.others} />
             </div>
           </section>
         </Fragment>

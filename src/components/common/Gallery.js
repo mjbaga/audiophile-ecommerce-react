@@ -8,7 +8,7 @@ const Gallery = ({ imageGallery }) => {
   ];
 
   return (
-    <div className="grid gap-4 md:grid-cols-gallery md:auto-rows-fr lg:max-h-[40rem]">
+    <div className="grid gap-4 md:grid-cols-gallery md:auto-rows-fr lg:max-h-[44rem]">
       {imageGallery.map((gallery, i) =>   
          (<CloudImageSet 
           key={i}
