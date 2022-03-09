@@ -10,8 +10,9 @@ const ImageTextPair = ({ children, title = "image", imageSet, order="image", clo
                           title={title} 
                           classes={imageClasses} /> :
                         <ImageSet 
-                          classes={imageClasses} 
-                          imageSet={imageSet} />;
+                          imageSet={imageSet}
+                          title={title} 
+                          classes={imageClasses} />;
 
   return (
     <div className={`image-text-pair flex flex-col lg:flex-row gap-8 lg:gap-4 ${classes ? classes : ''}`}>

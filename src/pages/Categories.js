@@ -14,15 +14,15 @@ const Categories = () => {
           <ImageNav items={$navItems} />
         </div>
       </section>
-      <section className="my-8 overflow-hidden lg:my-20">
+      <section className="overflow-hidden my-8 md:mt-20 md:mb-40 lg:my-20">
         <div className="container mx-auto px-5 lg:px-0">
           <ImageTextPair 
             imageSet={{
               desktop: require('assets/images/shared/desktop/image-best-gear.jpg'),
               tablet: require('assets/images/shared/tablet/image-best-gear.jpg'),
-              mobile: require('assets/images/shared/mobile/image-best-gear.jpg'),
-              title: 'Best audio gear'
+              mobile: require('assets/images/shared/mobile/image-best-gear.jpg')
             }} 
+            title="Best audio gear"
             order="text"
           >
             <h2 className="uppercase leading-10 text-xl my-4 md:my-8 tracking-ap-2 font-bold md:text-4xl md:leading-11 md:max-w-md md:mx-auto lg:ml-0">Bringing you the <span className="text-primary">best</span> audio gear</h2>
