@@ -1,16 +1,16 @@
 const $navItems = [ 
   {
-    link: '/headphones',
+    link: '/categories/headphones',
     text: 'Headphones',
     image: require('assets/images/shared/desktop/image-category-thumbnail-headphones.png')
   },
   {
-    link: '/speakers',
+    link: '/categories/speakers',
     text: 'Speakers',
     image: require('assets/images/shared/desktop/image-category-thumbnail-speakers.png')
   },
   {
-    link: '/earphones',
+    link: '/categories/earphones',
     text: 'Earphones',
     image: require('assets/images/shared/desktop/image-category-thumbnail-earphones.png')
   }

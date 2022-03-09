@@ -1,12 +1,19 @@
 import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
 import ImageTextPair from "components/common/ImageTextPair";
+import ImageNav from "components/common/ImageNav";
+import { $navItems } from 'utils/Constants';
 
 const Categories = () => {
 
   return (
     <Fragment>
       <Outlet />
+      <section className="my-8 overflow-hidden lg:my-20">
+        <div className="container mx-auto px-5 lg:px-0">
+          <ImageNav items={$navItems} />
+        </div>
+      </section>
       <section className="my-8 overflow-hidden lg:my-20">
         <div className="container mx-auto px-5 lg:px-0">
           <ImageTextPair 
