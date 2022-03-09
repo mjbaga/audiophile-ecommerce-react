@@ -37,7 +37,14 @@ const Category = () => {
         <div className="container mx-auto px-5 lg:px-0">
           {products.length && (
             products.map((product, i) => (
-              <ImageTextPair classes="mb-24" key={product.id} cloud="true" title={product.name} imageSet={product.image} order={i % 2 ? "text" : "image"}>
+              <ImageTextPair 
+                classes="mb-24" 
+                key={product.id} 
+                cloud="true" 
+                title={product.name} 
+                imageSet={product.categoryImage} 
+                order={i % 2 ? "text" : "image"}
+              >
                 {product.new && <p className="uppercase text-primary tracking-overline text-xs">New Product</p>}
                 <h2 className="uppercase leading-10 text-xl my-2 md:my-8 tracking-ap-2 font-bold md:text-4xl md:leading-11 md:max-w-md md:mx-auto lg:ml-0">{product.name}</h2>
                 <p className="text-black opacity-50 my-2">{product.description}</p>
