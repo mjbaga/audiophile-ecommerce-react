@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import ImageSet from "components/common/ImageSet";
 import useCloudImage from "hooks/use-cloud-image";
 
@@ -7,20 +7,17 @@ const CloudImageSet = ({ title, imageSet, classes = "" }) => {
 
   const {
     url: desktopImageUrl,
-    getImage: getDesktopImage,
-    error: desktopError
+    getImage: getDesktopImage
   } = useCloudImage(imageSet.desktop);
 
   const {
     url: tabletImageUrl,
-    getImage: getTabletImage,
-    error: tabletError
+    getImage: getTabletImage
   } = useCloudImage(imageSet.tablet);
 
   const {
     url: mobileImageUrl,
-    getImage: getMobileImage,
-    error: mobileError
+    getImage: getMobileImage
   } = useCloudImage(imageSet.mobile);
 
   useEffect(() => {
@@ -28,18 +25,24 @@ const CloudImageSet = ({ title, imageSet, classes = "" }) => {
     getTabletImage(imageSet.tablet);
     getMobileImage(imageSet.mobile);
 
-    let newImageSet = {
-      desktop: desktopImageUrl,
-      tablet: tabletImageUrl,
-      mobile: mobileImageUrl
-    };
-    
-    setImageSetUrl(newImageSet);
+    if(desktopImageUrl && tabletImageUrl && mobileImageUrl) {
+      let newImageSet = {
+        desktop: desktopImageUrl,
+        tablet: tabletImageUrl,
+        mobile: mobileImageUrl
+      };
+      
+      setImageSetUrl(newImageSet);
+    }
   }, [getDesktopImage, getTabletImage, getMobileImage, imageSet, desktopImageUrl, tabletImageUrl, mobileImageUrl]);
 
   return (
-    <ImageSet imageSet={imageSetUrl} title={title} classes={classes} />
+    <Fragment>
+      {(imageSetUrl.desktop && imageSetUrl.tablet && imageSetUrl.mobile) && 
+        <ImageSet imageSet={imageSetUrl} title={title} classes={classes} />
+      }
+    </Fragment>
   )
 }
 
-export default CloudImageSet;
+export default React.memo(CloudImageSet);

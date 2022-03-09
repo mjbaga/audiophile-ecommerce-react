@@ -1,4 +1,4 @@
-
+import React from 'react';
 
 const ImageSet = ({ imageSet, title, classes }) => {
   return (
@@ -13,4 +13,4 @@ const ImageSet = ({ imageSet, title, classes }) => {
   )
 }
 
-export default ImageSet;
+export default React.memo(ImageSet);
