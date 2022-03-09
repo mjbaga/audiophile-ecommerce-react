@@ -1,6 +1,5 @@
-import { db, storage } from "firebase-config";
+import { db } from "firebase-config";
 import { doc, getDoc, collection, getDocs, query, where, orderBy } from 'firebase/firestore';
-import { getDownloadURL, ref } from "firebase/storage";
 
 const getProduct = async function(id) {
   const product = doc(db, "products", id);
@@ -33,33 +32,4 @@ const getProductsByCat = async function (category) {
   return response;
 }
 
-const getImageCloudUrl = (imageURL) => {
-  const imageRef = ref(storage, imageURL);
-  return getDownloadURL(imageRef);
-    // .then((url) => {
-    //   // Insert url into an <img> tag to "download"
-    //     // <img src={url} alt={title} />;
-    //   return url;
-    // })
-    // .catch((error) => {
-    //   // A full list of error codes is available at
-    //   // https://firebase.google.com/docs/storage/web/handle-errors
-    //   switch (error.code) {
-    //     case 'storage/object-not-found':
-    //       console.log("Image not found");
-    //       break;
-    //     case 'storage/unauthorized':
-    //       console.log("User doesn't have permission to access the object");
-    //       break;
-    //     case 'storage/unknown':
-    //       console.log("Unknown error occurred, inspect the server response");
-    //       break;
-    //     default:
-    //       console.log("Error");
-    //   }
-
-    //   return false;
-    // });
-}
-
-export { getProduct, getCategories, getCategoryBySlug, getProductsByCat, getImageCloudUrl };
+export { getProduct, getCategories, getCategoryBySlug, getProductsByCat };
