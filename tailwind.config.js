@@ -55,6 +55,9 @@ module.exports = {
       },
       translate: {
         '60p': '60%',
+      },
+      gridTemplateColumns: {
+        'gallery': '40% 60%'
       }
     },
   },

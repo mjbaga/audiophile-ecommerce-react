@@ -32,4 +32,12 @@ const getProductsByCat = async function (category) {
   return response;
 }
 
-export { getProduct, getCategories, getCategoryBySlug, getProductsByCat };
+const getProductBySlug = async function (slug) {
+  const products = collection(db, "products");
+  const q = query(products, where("slug", "==", slug));
+  const response = await getDocs(q);
+
+  return response;
+}
+
+export { getProduct, getCategories, getCategoryBySlug, getProductsByCat, getProductBySlug };
