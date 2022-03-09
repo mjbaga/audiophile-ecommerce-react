@@ -5,7 +5,7 @@ import Homepage from 'pages/Homepage';
 import { lazyDelayed } from 'utils/CustomFunctions';
 import LoadingSpinner from 'components/layout/LoadingSpinner';
 
-const Categories = lazyDelayed(import('pages/Categories'));
+const InnerWrapContent = lazyDelayed(import('pages/InnerWrapContent'));
 const Category = lazyDelayed(import('pages/Category'));
 const Product = lazyDelayed(import('pages/Product'));
 
@@ -23,10 +23,12 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Page />}>
             <Route index element={<Homepage />} />
-            <Route path="categories" element={<Categories />}>
+            <Route path="categories" element={<InnerWrapContent />}>
               <Route path=":catSlug" element={<Category />} />
             </Route>
-            <Route path="products/:productSlug" element={<Product />} />
+            <Route path="products" element={<InnerWrapContent />}>
+              <Route path=":productSlug" element={<Product />} />
+            </Route>
           </Route>
         </Routes>
       </Suspense>

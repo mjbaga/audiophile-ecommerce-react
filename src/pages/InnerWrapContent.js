@@ -4,7 +4,7 @@ import ImageTextPair from "components/common/ImageTextPair";
 import ImageNav from "components/common/ImageNav";
 import { $navItems } from 'utils/Constants';
 
-const Categories = () => {
+const InnerWrapContent = () => {
 
   return (
     <Fragment>
@@ -34,4 +34,4 @@ const Categories = () => {
   )
 }
 
-export default Categories;
+export default InnerWrapContent;
