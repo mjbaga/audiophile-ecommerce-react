@@ -7,7 +7,7 @@ import menuIcon from 'assets/images/shared/tablet/icon-hamburger.svg';
 import { useState } from 'react';
 import { $navItems } from 'utils/Constants';
 import NavItems from 'components/common/NavItems';
-import { uiActions } from 'store/ui-slice';
+import { toggleCart } from 'store/ui-slice';
 
 const Header = () => {
   const [menuIsActive, setMenuIsActive] = useState(false);
@@ -19,7 +19,7 @@ const Header = () => {
   };
 
   const toggleCartHandler = () => {
-    dispatch(uiActions.toggleCart());
+    dispatch(toggleCart());
   };
 
   menuIsActive ? document.body.classList.add('menu-open') : document.body.classList.remove('menu-open');

@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { cartActions } from 'store/cart-slice';
+import { clearCart } from 'store/cart-slice';
 import { currencyFormat } from 'utils/CustomFunctions';
 import CartItem from 'components/cart/CartItem';
 import Button from 'components/common/Button';
@@ -10,7 +10,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   
   const removeAllHandler = () => {
-    dispatch(cartActions.clearCart());
+    dispatch(clearCart());
   }
 
   document.body.classList.add('menu-open');

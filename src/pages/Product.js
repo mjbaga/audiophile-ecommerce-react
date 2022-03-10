@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { cartActions } from "store/cart-slice";
+import { addItemToCart } from "store/cart-slice";
 import Button from "components/common/Button";
 import ImageTextPair from "components/common/ImageTextPair";
 import { Fragment, useEffect, useState } from "react";
@@ -36,7 +36,7 @@ const Product = () => {
       image: product.cartImage
     }
 
-    dispatch(cartActions.addItemToCart(cartProduct));
+    dispatch(addItemToCart(cartProduct));
   }
 
   useEffect(()=> {
