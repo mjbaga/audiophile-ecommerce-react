@@ -4,25 +4,24 @@ import { Link } from 'react-router-dom';
 import logo from 'assets/images/shared/desktop/logo.svg';
 import cartIcon from 'assets/images/shared/desktop/icon-cart.svg';
 import menuIcon from 'assets/images/shared/tablet/icon-hamburger.svg';
-import { useState } from 'react';
 import NavItems from 'components/common/NavItems';
-import { toggleCart } from 'store/ui-slice';
+import { toggleCart, toggleMobileMenu } from 'store/ui-slice';
 
 const Header = () => {
-  const [menuIsActive, setMenuIsActive] = useState(false);
   const dispatch = useDispatch();
   const cartTotalItems = useSelector((state) => state.cart.totalQuantity);
   const categories = useSelector((state) => state.category.categories);
-
-  const menuClickHandler = () => {
-    setMenuIsActive(prevMenuIsActive => !prevMenuIsActive);
-  };
+  const menuIsActive = useSelector((state) => state.ui.mobileMenuIsActive);
 
   const toggleCartHandler = () => {
     dispatch(toggleCart());
   };
 
-  menuIsActive ? document.body.classList.add('menu-open') : document.body.classList.remove('menu-open');
+  const toggleMobileMenuHandler = () => {
+    dispatch(toggleMobileMenu());
+  }
+
+  // menuIsActive ? document.body.classList.add('menu-open') : document.body.classList.remove('menu-open');
 
   return (
     <header className="header relative">
@@ -37,7 +36,7 @@ const Header = () => {
             className="bg-transparent border-0 order-1 sm:grow-1 lg:hidden"
             aria-controls="primary-navigation"
             aria-expanded={menuIsActive ? 'true' : 'false'}
-            onClick={menuClickHandler} 
+            onClick={toggleMobileMenuHandler} 
           >
             <span className="sr-only">Menu Button</span>
             <img src={menuIcon} alt="Menu button" />

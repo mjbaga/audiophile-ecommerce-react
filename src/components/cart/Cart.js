@@ -13,8 +13,6 @@ const Cart = () => {
     dispatch(clearCart());
   }
 
-  document.body.classList.add('menu-open');
-
   return (
     <div className="container mx-auto px-5 lg:px-0 relative">
       <div className="cart p-8 absolute bg-white rounded-lg w-[95%] top-32 left-1/2 -translate-x-2/4 md:translate-x-0 md:w-auto md:min-w-[24rem] lg:top-5 md:left-auto md:right-0  z-[999]">
