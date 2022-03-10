@@ -24,7 +24,7 @@ const Footer = () => {
           <div className="w-full mx-auto px-16 md:p-0 md:col-span-2 lg:col-span-1 lg:w-full lg:order-1">
             <p className="text-white opacity-50 text-center md:text-left text-sm">Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week.</p>
           </div>
-          <p className="text-white opacity-50 text-center md:text-left text-sm md:mt-0 lg:order-3">Copyright 2021. All Rights Reserved</p>
+          <p className="text-white/50 text-center md:text-left text-sm md:mt-0 lg:order-3">Copyright 2021. All Rights Reserved. This website was created by <span className="font-bold text-white">Marvin Jayson Baga</span>.</p>
           <ul className="flex gap-4 mx-auto md:mr-0 lg:row-span-2 lg:order-2 lg:self-center">
             <li>
               <Link to="/company" className="text-white text-md lg:text-lg hover:text-primary duration-300 transition-colors">
