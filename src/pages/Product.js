@@ -8,20 +8,29 @@ import { getProductBySlug } from 'utils/Firebase-Api';
 import { currencyFormat, processToParagraphs } from "utils/CustomFunctions";
 import Gallery from "components/common/Gallery";
 import RelatedProducts from "components/common/RelatedProducts";
-import CartButtons from "components/cart/CartButtons";
 import LoadingSpinner from "components/layout/LoadingSpinner";
 
 const Product = () => {
   const [product, setProduct] = useState({});
+  const [cartQty, setCartQty] = useState(1);
   const params = useParams();
   const productSlug = params.productSlug;
   const dispatch = useDispatch();
 
+  const cartDecreaseHandler = () => {
+    setCartQty(cartQty - 1);
+  }
+
+  const cartIncreaseHandler = () => {
+    setCartQty(cartQty + 1);
+  }
+
   const addToCartHandler = () => {
+
     const cartProduct = {
       id: product.id,
       price: product.price,
-      quantity: 1,
+      quantity: cartQty,
       totalPrice: product.price,
       name: product.name,
       image: product.cartImage
@@ -65,7 +74,11 @@ const Product = () => {
                 <p className="text-black opacity-50 mt-2 mb-12">{product.description}</p>
                 <p className="font-bold text-md">{currencyFormat(product.price)}</p>
                 <div className="flex flex-row gap-4 py-4 mt-8">
-                  <CartButtons itemId={product.id} />
+                <div className="bg-darkgray flex gap-2 px-4 items-center">
+                  <button className="text-black/50 font-bold bg-transparent px-4 py-2 hover:text-primary duration-1000 transition" onClick={cartDecreaseHandler} disabled={cartQty <= 1}>-</button>
+                  <span className="px-4 font-bold">{cartQty}</span>
+                  <button className="text-black/50 font-bold bg-transparent px-4 py-2 hover:text-primary duration-1000 transition" onClick={cartIncreaseHandler}>+</button>
+                </div>
                   <Button type="button" classes="text-white bg-primary hover:bg-secondary" onButtonClick={addToCartHandler}>Add to cart</Button>
                 </div>
               </ImageTextPair>
