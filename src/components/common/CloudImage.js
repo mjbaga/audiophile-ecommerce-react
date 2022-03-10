@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import useCloudImage from "hooks/use-cloud-image";
 import LoadingSpinner from 'components/layout/LoadingSpinner';
 
-const Image = (imageSrc, title="image", classes="") => {
+const CloudImage = (imageSrc, title="image", classes="") => {
   const {
     url,
     getImage
@@ -18,4 +18,4 @@ const Image = (imageSrc, title="image", classes="") => {
   return (url ? <img src={url} alt={title} className={`${classes ? classes : ''}`} /> : <LoadingSpinner />)
 }
 
-export default React.memo(Image);
+export default React.memo(CloudImage);

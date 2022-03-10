@@ -1,6 +1,5 @@
 import Button from "components/common/Button";
-import CloudImageSet from "components/common/CloudImageSet";
-
+import ImageSet from "components/common/ImageSet";
 
 const RelatedProducts = ({ relatedItems }) => {
 
@@ -10,7 +9,7 @@ const RelatedProducts = ({ relatedItems }) => {
       <div className="flex flex-col md:flex-row gap-4 lg:gap-8">
         {relatedItems.map((item) => (
           <div className="flex flex-col text-center my-4" key={item.slug}>
-            <CloudImageSet imageSet={item.image} title={item.name} classes="my-4 rounded-lg overflow-hidden" />
+            <ImageSet imageSet={item.image} title={item.name} classes="my-4 rounded-lg overflow-hidden" />
             <h3 className="text-lg uppercase text-black font-bold my-4">{item.name}</h3>
             <Button to={`/products/${item.slug}`} classes="my-4 text-white bg-primary mx-auto hover:bg-secondary">See product</Button>
           </div>

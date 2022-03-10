@@ -1,4 +1,4 @@
-import CloudImageSet from "components/common/CloudImageSet";
+import ImageSet from "components/common/ImageSet";
 
 const Gallery = ({ imageGallery }) => {
   const galleryClass = [
@@ -10,7 +10,7 @@ const Gallery = ({ imageGallery }) => {
   return (
     <div className="grid gap-4 md:grid-cols-gallery md:auto-rows-fr lg:max-h-[44rem]">
       {imageGallery.map((gallery, i) =>   
-         (<CloudImageSet 
+         (<ImageSet 
           key={i}
           imageSet={gallery} 
           title={`gallery-${i}`} 

@@ -9,6 +9,7 @@ import { currencyFormat, processToParagraphs } from "utils/CustomFunctions";
 import Gallery from "components/common/Gallery";
 import RelatedProducts from "components/common/RelatedProducts";
 import CartButtons from "components/cart/CartButtons";
+import LoadingSpinner from "components/layout/LoadingSpinner";
 
 const Product = () => {
   const [product, setProduct] = useState({});
@@ -36,8 +37,6 @@ const Product = () => {
 
   }, [productSlug]);
 
-  console.log(product);
-
   let included;
   if(product.includes) {
     included = product.includes.map((item, i) => (
@@ -49,14 +48,13 @@ const Product = () => {
 
   return (
     <Fragment>
-      {Object.keys(product).length > 0 && (
+      {Object.keys(product).length > 0 ? (
         <Fragment>
           <section className="overflow-hidden my-8 md:my-12 lg:my-20">
             <div className="container mx-auto px-5 lg:px-0">
               <ImageTextPair 
                 classes="mb-16 md:flex-row" 
                 key={product.id} 
-                cloud="true" 
                 title={product.name} 
                 imageSet={product.image} 
                 order="image"
@@ -98,7 +96,7 @@ const Product = () => {
             </div>
           </section>
         </Fragment>
-      )}
+      ) : <div className="min-h-screen relative"><LoadingSpinner /></div>}
     </Fragment>
   )
 }

@@ -1,5 +1,6 @@
 import Button from "components/common/Button";
 import ImageTextPair from "components/common/ImageTextPair";
+import LoadingSpinner from "components/layout/LoadingSpinner";
 import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCategoryBySlug, getProductsByCat } from 'utils/Firebase-Api';
@@ -25,7 +26,7 @@ const Category = () => {
 
   return (
     <Fragment>
-      {Object.keys(category).length > 0 && (
+      {Object.keys(category).length > 0 ? (
         <Fragment>
           <section className="bg-black py-10 lg:py-20">
             <div className="container mx-auto px-5 lg:px-0">
@@ -40,7 +41,6 @@ const Category = () => {
                   <ImageTextPair 
                     classes="mb-24" 
                     key={product.id} 
-                    cloud="true" 
                     title={product.name} 
                     imageSet={product.categoryImage} 
                     order={i % 2 ? "text" : "image"}
@@ -55,7 +55,7 @@ const Category = () => {
             </div>
           </section>
         </Fragment>
-      )}
+      ) : <div className="min-h-screen relative"><LoadingSpinner /></div>}
     </Fragment>
   )
 }
