@@ -1,3 +1,5 @@
+import { useDispatch } from "react-redux";
+import { cartActions } from "store/cart-slice";
 import Button from "components/common/Button";
 import ImageTextPair from "components/common/ImageTextPair";
 import { Fragment, useEffect, useState } from "react";
@@ -6,11 +8,26 @@ import { getProductBySlug } from 'utils/Firebase-Api';
 import { currencyFormat, processToParagraphs } from "utils/CustomFunctions";
 import Gallery from "components/common/Gallery";
 import RelatedProducts from "components/common/RelatedProducts";
+import CartButtons from "components/cart/CartButtons";
 
 const Product = () => {
   const [product, setProduct] = useState({});
   const params = useParams();
   const productSlug = params.productSlug;
+  const dispatch = useDispatch();
+
+  const addToCartHandler = () => {
+    const cartProduct = {
+      id: product.id,
+      price: product.price,
+      quantity: 1,
+      totalPrice: product.price,
+      name: product.name,
+      image: product.cartImage
+    }
+
+    dispatch(cartActions.addItemToCart(cartProduct));
+  }
 
   useEffect(()=> {
     getProductBySlug(productSlug).then((response) => {
@@ -50,12 +67,8 @@ const Product = () => {
                 <p className="text-black opacity-50 mt-2 mb-12">{product.description}</p>
                 <p className="font-bold text-md">{currencyFormat(product.price)}</p>
                 <div className="flex flex-row gap-4 py-4 mt-8">
-                  <div className="bg-lightgray flex gap-2 px-4 items-center">
-                    <button className="text-black/50 font-bold bg-transparent px-4 py-2 hover:text-primary duration-1000 transition">-</button>
-                    <span className="px-4 font-bold">1</span>
-                    <button className="text-black/50 font-bold bg-transparent px-4 py-2 hover:text-primary duration-1000 transition">+</button>
-                  </div>
-                  <Button type="button" classes="text-white bg-primary hover:bg-secondary">Add to cart</Button>
+                  <CartButtons itemId={product.id} />
+                  <Button type="button" classes="text-white bg-primary hover:bg-secondary" onButtonClick={addToCartHandler}>Add to cart</Button>
                 </div>
               </ImageTextPair>
             </div>

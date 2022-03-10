@@ -58,6 +58,15 @@ module.exports = {
       },
       gridTemplateColumns: {
         'gallery': '40% 60%'
+      },
+      keyframes: {
+        enterFromRight: {
+          '0%': 'transform: translateX(100%)',
+          '100%': 'transform: translateX(0)'
+        }
+      },
+      animation: {
+        enterFromRight: 'enterFromRight 1s ease-in'
       }
     },
   },

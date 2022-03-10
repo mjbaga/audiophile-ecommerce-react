@@ -15,7 +15,7 @@ const ImageTextPair = ({ children, title = "image", imageSet, order="image", clo
                           classes={imageClasses} />;
 
   return (
-    <div className={`image-text-pair flex flex-col lg:flex-row gap-8 lg:gap-4 ${classes ? classes : ''}`}>
+    <div className={`image-text-pair flex flex-col lg:flex-row gap-8 lg:gap-4 lg:min-h-[20rem] ${classes ? classes : ''}`}>
       { imageDisplay }
       <div className={`text-container text-${align} lg:text-left grow basis-3/6 lg:w-1/2 flex flex-col justify-center order-2 ${order === 'image' ? 'lg:order-2 lg:px-16 xl:px-24' : 'lg:order-1 lg:pr-8 xl:pr-24'}`}>
         {children}

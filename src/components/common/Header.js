@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from 'react-redux';
 import ImageNav from 'components/common/ImageNav';
 import { Link } from 'react-router-dom';
 import logo from 'assets/images/shared/desktop/logo.svg';
@@ -6,12 +7,19 @@ import menuIcon from 'assets/images/shared/tablet/icon-hamburger.svg';
 import { useState } from 'react';
 import { $navItems } from 'utils/Constants';
 import NavItems from 'components/common/NavItems';
+import { uiActions } from 'store/ui-slice';
 
 const Header = () => {
   const [menuIsActive, setMenuIsActive] = useState(false);
+  const dispatch = useDispatch();
+  const cartTotalItems = useSelector((state) => state.cart.totalQuantity);
 
   const menuClickHandler = () => {
     setMenuIsActive(prevMenuIsActive => !prevMenuIsActive);
+  };
+
+  const toggleCartHandler = () => {
+    dispatch(uiActions.toggleCart());
   };
 
   menuIsActive ? document.body.classList.add('menu-open') : document.body.classList.remove('menu-open');
@@ -39,9 +47,14 @@ const Header = () => {
             id="primary-navigation"
             classes="main-nav hidden lg:block order-2"
           />
-          <button className="bg-transparent border-0 order-3">
+          <button className="bg-transparent border-0 order-3 relative" onClick={toggleCartHandler}>
             <span className="sr-only">Cart Button</span>
             <img src={cartIcon} alt="Cart" />
+            {cartTotalItems > 0 && (
+              <div className="absolute -top-2 -right-3 rounded-full bg-red-600 text-white text-xs font-bold aspect-square w-[21px] h-[21px] grid place-items-center">
+                <p className="leading-[13px] tracking-ap-1">{cartTotalItems}</p>
+              </div>)
+            }
           </button>
         </div>   
       </div>

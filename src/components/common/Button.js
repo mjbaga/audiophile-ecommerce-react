@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import ConditionalWrapper from 'utils/ConditionalWrapper';
 
-const Button = ({ to, classes, children, type='anchor', disabled=false }) => {
+const Button = ({ to, classes, children, type='anchor', disabled=false, onButtonClick }) => {
   const defaultClasses = "btn uppercase px-6 py-3 duration-300 transition cursor-pointer tracking-ap-1 font-bold";
 
   return (
@@ -12,7 +12,7 @@ const Button = ({ to, classes, children, type='anchor', disabled=false }) => {
           {children}
         </Link>}
       wrapperFalse={children => 
-        <button className={`${defaultClasses} ${classes ? classes : ''}`} disabled={disabled}>{children}</button>}
+        <button className={`${defaultClasses} ${classes ? classes : ''}`} disabled={disabled} onClick={onButtonClick}>{children}</button>}
     >
       {children}
     </ConditionalWrapper>

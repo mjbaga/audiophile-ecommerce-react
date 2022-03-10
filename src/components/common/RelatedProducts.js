@@ -4,8 +4,6 @@ import CloudImageSet from "components/common/CloudImageSet";
 
 const RelatedProducts = ({ relatedItems }) => {
 
-  console.log(relatedItems);
-
   return (
     <div className="related-items">
       <h2 className="uppercase text-black text-lg md:text-2xl font-bold my-4 text-center">You may also like</h2>
