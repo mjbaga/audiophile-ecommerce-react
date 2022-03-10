@@ -17,7 +17,7 @@ const Cart = () => {
 
   return (
     <div className="container mx-auto px-5 lg:px-0 relative">
-      <div className="cart absolute bg-white rounded-lg top-5 right-0 p-8 z-[999] animate-enterFromRight min-w-[24rem]">
+      <div className="cart p-8 absolute bg-white rounded-lg w-[95%] top-32 left-1/2 -translate-x-2/4 md:translate-x-0 md:w-auto md:min-w-[24rem] lg:top-5 md:left-auto md:right-0  z-[999]">
         <div className="flex justify-between">
           <p className="uppercase text-black font-bold text-md">Cart {cart.totalQuantity > 0 ? `(${cart.totalQuantity})` : ''}</p>
           {cart.totalQuantity > 0 && <button className="border-0 text-black/50 underline" onClick={removeAllHandler}>Remove all</button>}
