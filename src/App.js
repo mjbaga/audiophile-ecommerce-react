@@ -1,15 +1,22 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Page from 'components/layout/Page';
 import Homepage from 'pages/Homepage';
 import { lazyDelayed } from 'utils/CustomFunctions';
 import LoadingSpinner from 'components/layout/LoadingSpinner';
+import { useDispatch } from 'react-redux';
+import { fetchCategories } from 'store/category-actions';
 
 const InnerWrapContent = lazyDelayed(import('pages/InnerWrapContent'));
 const Category = lazyDelayed(import('pages/Category'));
 const Product = lazyDelayed(import('pages/Product'));
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(()=> {
+    dispatch(fetchCategories());
+  }, [dispatch]);
 
   return (
     <div className="App">

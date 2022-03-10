@@ -5,7 +5,6 @@ import logo from 'assets/images/shared/desktop/logo.svg';
 import cartIcon from 'assets/images/shared/desktop/icon-cart.svg';
 import menuIcon from 'assets/images/shared/tablet/icon-hamburger.svg';
 import { useState } from 'react';
-import { $navItems } from 'utils/Constants';
 import NavItems from 'components/common/NavItems';
 import { toggleCart } from 'store/ui-slice';
 
@@ -13,6 +12,7 @@ const Header = () => {
   const [menuIsActive, setMenuIsActive] = useState(false);
   const dispatch = useDispatch();
   const cartTotalItems = useSelector((state) => state.cart.totalQuantity);
+  const categories = useSelector((state) => state.category.categories);
 
   const menuClickHandler = () => {
     setMenuIsActive(prevMenuIsActive => !prevMenuIsActive);
@@ -26,7 +26,7 @@ const Header = () => {
 
   return (
     <header className="header relative">
-      <ImageNav menuIsActive={menuIsActive} id="primary-navigation" items={$navItems} classes="w-full absolute left-0 top-[88px] lg:hidden bg-white md:h-[285px] z-[200] transform duration-1000 ease-in-out" mobileMenu="true" />
+      <ImageNav menuIsActive={menuIsActive} id="primary-navigation" items={categories} classes="w-full absolute left-0 top-[88px] lg:hidden bg-white md:h-[285px] z-[200] transform duration-1000 ease-in-out" mobileMenu="true" />
       <div className="bg-black z-[9999] absolute top-0 left-0 w-full lg:relative ">
         <div className="container py-8 border-b border-gray-700 flex gap-4 justify-between mx-auto relative px-5 lg:px-0">
           <Link to="/" className="logo order-2 lg:order-1 sm:mr-auto lg:mr-0">
@@ -43,7 +43,7 @@ const Header = () => {
             <img src={menuIcon} alt="Menu button" />
           </button>
           <NavItems
-            navItems={$navItems}
+            navItems={categories}
             id="primary-navigation"
             classes="main-nav hidden lg:block order-2"
           />

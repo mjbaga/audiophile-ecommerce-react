@@ -1,9 +1,10 @@
+import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import logo from 'assets/images/shared/desktop/logo.svg';
-import { $navItems } from 'utils/Constants';
-import NavItems from "./NavItems";
+import NavItems from "components/common/NavItems";
 
 const Footer = () => {
+  const categories = useSelector((state) => state.category.categories);
 
   return (
     <footer className="footer bg-black relative">
@@ -14,7 +15,7 @@ const Footer = () => {
             <img src={logo} className="w-min" alt="Audiophile" />
           </Link>
           <NavItems
-            navItems={$navItems}
+            navItems={categories}
             classes="footer-nav"
             menuClass="flex-col md:flex-row"
           />

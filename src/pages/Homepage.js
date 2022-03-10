@@ -1,8 +1,7 @@
+import { useSelector } from 'react-redux';
 import { Fragment } from "react";
 import HeroBanner from "components/home/HeroBanner";
 import ImageNav from "components/common/ImageNav";
-// import Page from "components/layout/Page";
-import { $navItems } from "utils/Constants";
 import bgPattern from 'assets/images/home/desktop/pattern-circles.svg';
 import ImageSet from "components/common/ImageSet";
 import Button from "components/common/Button";
@@ -20,13 +19,14 @@ const heroItem = {
 
 const Homepage = ({ title = "Audiophile" }) => {
   document.title = title;
+  const categories = useSelector((state) => state.category.categories);
 
   return (
     <Fragment>
       <HeroBanner item={heroItem} link="/" />
       <section className="my-4 lg:my-20">
         <div className="container mx-auto px-5 lg:px-0">
-          <ImageNav items={$navItems} />
+          <ImageNav items={categories} />
         </div>
       </section>
       <section className="my-4 overflow-hidden lg:my-20">

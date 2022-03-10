@@ -13,8 +13,8 @@ const NavItems = ({ navItems, id, classes, menuClass }) => {
         </li>
         {navItems.map((item, i)=> (
           <li className="nav-item my-2 lg:my-0" key={i}>
-            <NavLink to={item.link} className="text-white uppercase text-xs text-center mx-auto hover:text-primary transition-colors duration-300 font-bold block tracking-ap-2">
-              {item.text}
+            <NavLink to={`/categories/${item.slug}`} className="text-white uppercase text-xs text-center mx-auto hover:text-primary transition-colors duration-300 font-bold block tracking-ap-2">
+              {item.name}
             </NavLink>
           </li>
         ))}
