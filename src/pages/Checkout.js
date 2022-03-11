@@ -6,7 +6,6 @@ import CODImage from "assets/images/shared/desktop/cod.svg";
 import { currencyFormat } from "utils/CustomFunctions";
 import Button from "components/common/Button";
 import { closeOverlay } from 'store/ui-slice';
-// import { clearCart } from "store/cart-slice";
 import ConfirmationModal from "components/form/ConfirmationModal";
 
 const Checkout = () => {
@@ -75,7 +74,7 @@ const Checkout = () => {
 
     if(validForm) {
       setShowModal(true);
-      // resetInputs();
+      resetInputs();
     }
   }
 
