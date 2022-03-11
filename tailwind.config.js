@@ -11,6 +11,7 @@ module.exports = {
         white: '#fff',
         lightgray: '#FAFAFA',
         darkgray: '#F1F1F1',
+        bordergray: 'CFCFCF',
         apRed: '#CD2C2C'
       },
       fontFamily: {
@@ -57,7 +58,8 @@ module.exports = {
         '60p': '60%',
       },
       gridTemplateColumns: {
-        'gallery': '40% 60%'
+        'gallery': '40% 60%',
+        'checkout': '65% 35%'
       },
       keyframes: {
         enterFromRight: {

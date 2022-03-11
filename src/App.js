@@ -7,6 +7,7 @@ import LoadingSpinner from 'components/layout/LoadingSpinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories } from 'store/category-actions';
 import { closeOverlay } from 'store/ui-slice';
+import Checkout from 'pages/Checkout';
 
 const InnerWrapContent = lazyDelayed(import('pages/InnerWrapContent'));
 const Category = lazyDelayed(import('pages/Category'));
@@ -46,6 +47,7 @@ function App() {
             <Route path="products" element={<InnerWrapContent />}>
               <Route path=":productSlug" element={<Product />} />
             </Route>
+            <Route path="checkout" element={<Checkout />} />
           </Route>
         </Routes>
       </Suspense>
