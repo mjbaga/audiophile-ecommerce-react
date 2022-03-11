@@ -79,7 +79,7 @@ const Product = () => {
                   <span className="px-4 font-bold">{cartQty}</span>
                   <button className="text-black/50 font-bold bg-transparent px-4 py-2 hover:text-primary duration-1000 transition" onClick={cartIncreaseHandler}>+</button>
                 </div>
-                  <Button type="button" classes="text-white bg-primary hover:bg-secondary" onButtonClick={addToCartHandler}>Add to cart</Button>
+                  <Button type="button" classes="text-white bg-primary hover:bg-secondary font-bold" onButtonClick={addToCartHandler}>Add to cart</Button>
                 </div>
               </ImageTextPair>
             </div>

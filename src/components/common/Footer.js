@@ -27,19 +27,19 @@ const Footer = () => {
           <p className="text-white/50 text-center md:text-left text-sm md:mt-0 lg:order-3">Copyright 2021. All Rights Reserved. This website was created by <span className="font-bold text-white">Marvin Jayson Baga</span>.</p>
           <ul className="flex gap-4 mx-auto md:mr-0 lg:row-span-2 lg:order-2 lg:self-center">
             <li>
-              <Link to="/company" className="text-white text-md lg:text-lg hover:text-primary duration-300 transition-colors">
+              <Link to="/" className="text-white text-md lg:text-lg hover:text-primary duration-300 transition-colors">
                 <span className="sr-only">Facebook</span>
                 <i className="icon icon-facebook"></i>
               </Link>
             </li>
             <li>
-              <Link to="/company" className="text-white text-md lg:text-lg hover:text-primary duration-300 transition-colors">
+              <Link to="/" className="text-white text-md lg:text-lg hover:text-primary duration-300 transition-colors">
                 <span className="sr-only">Twitter</span>
                 <i className="icon icon-twitter"></i>
               </Link>
             </li>
             <li>
-              <Link to="/company" className="text-white text-md lg:text-lg hover:text-primary duration-300 transition-colors">
+              <Link to="/" className="text-white text-md lg:text-lg hover:text-primary duration-300 transition-colors">
                 <span className="sr-only">Instagram</span>
                 <i className="icon icon-instagram"></i>
               </Link>

@@ -11,7 +11,7 @@ const RelatedProducts = ({ relatedItems }) => {
           <div className="flex flex-col text-center my-4" key={item.slug}>
             <ImageSet imageSet={item.image} title={item.name} classes="my-4 rounded-lg overflow-hidden" />
             <h3 className="text-lg uppercase text-black font-bold my-4">{item.name}</h3>
-            <Button to={`/products/${item.slug}`} classes="my-4 text-white bg-primary mx-auto hover:bg-secondary">See product</Button>
+            <Button to={`/products/${item.slug}`} classes="my-4 text-white bg-primary mx-auto hover:bg-secondary font-bold">See product</Button>
           </div>
         ))}
       </div>

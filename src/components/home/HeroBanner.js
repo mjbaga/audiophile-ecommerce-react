@@ -11,7 +11,7 @@ const HeroBanner = ({ item, link}) => {
           <p className="uppercase opacity-50 tracking-overline font-light">New Product</p>
           <h1 className="uppercase leading-10 text-3xl my-4 tracking-ap-1.3 font-bold md:text-8xl md:leading-15">{title}</h1>
           <p className="my-4 opacity-75 mx-auto">{desc}</p>
-          <Button to={link} classes="my-4 text-white bg-primary mx-auto lg:ml-0 hover:bg-secondary">See product</Button>
+          <Button to={link} classes="my-4 text-white bg-primary mx-auto lg:ml-0 hover:bg-secondary font-bold">See product</Button>
         </div>
       </div>
       <ImageSet 

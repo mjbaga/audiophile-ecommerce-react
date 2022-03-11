@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import ConditionalWrapper from 'utils/ConditionalWrapper';
 
 const Button = ({ to, classes, children, type='anchor', disabled=false, onButtonClick }) => {
-  const defaultClasses = "btn uppercase px-6 py-3 duration-300 transition cursor-pointer tracking-ap-1 font-bold";
+  const defaultClasses = "btn uppercase px-6 py-3 duration-300 transition cursor-pointer tracking-ap-1";
 
   return (
     <ConditionalWrapper

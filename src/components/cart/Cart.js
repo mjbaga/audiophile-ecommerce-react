@@ -35,7 +35,7 @@ const Cart = () => {
               <p className="text-black/50 uppercase">Total</p>
               <p className="font-bold">{currencyFormat(cart.totalCartPrice)}</p>
             </div>
-            <Button to="/checkout" classes="mt-4 w-full block text-center text-white text-xs tracking-ap-1 bg-primary hover:bg-secondary">
+            <Button to="/checkout" classes="mt-4 w-full block text-center text-white text-xs tracking-ap-1 bg-primary hover:bg-secondary font-bold">
               Checkout
             </Button>
           </Fragment>
