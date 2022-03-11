@@ -15,8 +15,7 @@ const Product = lazyDelayed(import('pages/Product'));
 
 function App() {
   const dispatch = useDispatch();
-  const menuIsActive = useSelector((state) => state.ui.mobileMenuIsActive);
-  const cartIsVisible = useSelector((state) => state.ui.cartIsVisible);
+  const { menuIsActive, cartIsVisible } = useSelector((state) => state.ui);
 
   useEffect(()=> {
     dispatch(fetchCategories());

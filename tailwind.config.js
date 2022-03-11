@@ -62,13 +62,13 @@ module.exports = {
         'checkout': '65% 35%'
       },
       keyframes: {
-        enterFromRight: {
-          '0%': 'transform: translateX(100%)',
-          '100%': 'transform: translateX(0)'
+        slideDown: {
+          '0%': { transform: 'translate(-50%, -5rem)', opacity: 0 },
+          '100%': { transform: 'translate(-50%, 0)', opacity: 1 }
         }
       },
       animation: {
-        enterFromRight: 'enterFromRight 1s ease-in'
+        slidedown: 'slideDown 1s ease-in'
       }
     },
   },

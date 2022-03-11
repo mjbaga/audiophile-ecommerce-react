@@ -29,7 +29,7 @@ const Homepage = ({ title = "Audiophile" }) => {
 
   return (
     <Fragment>
-      <HeroBanner item={heroItem} link="/" />
+      <HeroBanner item={heroItem} link="/products/xx99-mark-two-headphones" />
       <section className="my-4 lg:my-20">
         <div className="container mx-auto px-5 lg:px-0">
           <ImageNav items={categories} />
@@ -45,7 +45,7 @@ const Homepage = ({ title = "Audiophile" }) => {
             <div className="flex flex-col grow text-center lg:text-left pb-8 justify-center z-10">
               <h2 className="uppercase leading-10 text-3xl my-4 tracking-ap-1.3 font-bold md:text-8xl md:leading-15 text-white">ZX9<br></br>Speaker</h2>
               <p className="text-white my-4 opacity-75 max-w-sm mx-auto lg:mx-0">Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.</p>
-              <Button to="/" classes="text-white bg-black hover:bg-stone-500 mx-auto lg:ml-0 my-4 tracking-ap-1 font-bold">See product</Button>
+              <Button to="/products/zx9-speaker" classes="text-white bg-black hover:bg-stone-500 mx-auto lg:ml-0 my-4 tracking-ap-1 font-bold">See product</Button>
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@ const Homepage = ({ title = "Audiophile" }) => {
           <div className="rounded-lg overflow-hidden flex flex-col lg:flex-row relative">
             <div className="absolute left-8 top-1/2 -translate-y-2/4 flex flex-col">
               <h2 className="uppercase leading-10 text-xl my-4 tracking-ap-2 font-bold">ZX7 Speaker</h2>
-              <Button to="/" classes="mt-4 text-black text-xs bg-transparent border-2 border-black hover:bg-black hover:text-white mr-auto font-bold">See product</Button>
+              <Button to="/products/zx7-speaker" classes="mt-4 text-black text-xs bg-transparent border-2 border-black hover:bg-black hover:text-white mr-auto font-bold">See product</Button>
             </div>
             <ImageSet 
               imageSet={{
@@ -85,7 +85,7 @@ const Homepage = ({ title = "Audiophile" }) => {
             />
             <div className="grow flex flex-col py-8 gap-4 bg-darkgray rounded-lg px-8 w-full sm:w-1/2 justify-center lg:pl-32">
               <h2 className="uppercase leading-10 text-xl my-4 tracking-ap-2 font-bold">YX1 Earphones</h2>
-              <Button to="/" classes="text-black text-xs bg-transparent border-2 border-black hover:bg-black hover:text-white mr-auto font-bold">See product</Button>
+              <Button to="/products/yx1-earphones" classes="text-black text-xs bg-transparent border-2 border-black hover:bg-black hover:text-white mr-auto font-bold">See product</Button>
             </div>
           </div>
         </div>

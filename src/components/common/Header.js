@@ -21,8 +21,6 @@ const Header = () => {
     dispatch(toggleMobileMenu());
   }
 
-  // menuIsActive ? document.body.classList.add('menu-open') : document.body.classList.remove('menu-open');
-
   return (
     <header className="header relative">
       <ImageNav menuIsActive={menuIsActive} id="primary-navigation" items={categories} classes="w-full absolute left-0 top-[88px] lg:hidden bg-white md:h-[285px] z-[200] transform duration-1000 ease-in-out" mobileMenu="true" />
