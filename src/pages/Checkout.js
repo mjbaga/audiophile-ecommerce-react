@@ -1,15 +1,59 @@
-import { useSelector } from "react-redux";
+import { useRef, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import TextBoxInput from "components/form/TextBoxInput";
 import { Fragment, useState } from "react";
 import CODImage from "assets/images/shared/desktop/cod.svg";
 import { currencyFormat } from "utils/CustomFunctions";
 import Button from "components/common/Button";
+import { closeOverlay } from 'store/ui-slice';
 
 const Checkout = () => {
+  const [paymentMethod, setPaymentMethod] = useState("E-money");
+  const [formIsValid, setFormIsValid] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const cart = useSelector((state) => state.cart);
   const { items, totalCartPrice } = cart;
 
-  const [paymentMethod, setPaymentMethod] = useState("E-money");
+  const dispatch = useDispatch();
+
+  useEffect(()=> {
+    dispatch(closeOverlay());
+  },[dispatch]);
+  
+  const nameRef = useRef(),
+        emailRef = useRef(),
+        phoneNumberRef = useRef(),
+        addressRef = useRef(),
+        zipRef = useRef(),
+        cityRef = useRef(),
+        countryRef = useRef(),
+        emoneyRef = useRef(),
+        emoneyPinRef = useRef();
+
+  const checkFormValidity = () => {
+
+    const baseCheck = nameRef.current.isValid && 
+                      emailRef.current.isValid && 
+                      phoneNumberRef.current.isValid && 
+                      addressRef.current.isValid && 
+                      zipRef.current.isValid && 
+                      cityRef.current.isValid && 
+                      countryRef.current.isValid;
+
+    return paymentMethod ? baseCheck && emoneyRef && emoneyPinRef : baseCheck;
+  }
+
+  const resetInputs = () => {
+    nameRef.current.reset(); 
+    emailRef.current.reset(); 
+    phoneNumberRef.current.reset(); 
+    addressRef.current.reset(); 
+    zipRef.current.reset(); 
+    cityRef.current.reset(); 
+    countryRef.current.reset();
+    emoneyRef.current.reset();
+    emoneyPinRef.current.reset();
+  }
 
   const paymentHandler = (e) => {
     setPaymentMethod(e.target.value);
@@ -17,9 +61,19 @@ const Checkout = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    setFormSubmitted(true);
+    setFormIsValid(checkFormValidity());
+
+    if(formIsValid && formSubmitted) {
+
+    }
   }
 
   const computedTotal = totalCartPrice > 0 ? (totalCartPrice + (totalCartPrice * 0.2) + 50) : 0;
+
+  const nameValidation = (value) => {
+    return value.trim() !== '' && /^([A-Z][a-z]+([ ]?[a-z]?['-]?[A-Z][a-z]+)*)$/g.test(value);
+  }
 
   return (
     <div className="bg-darkgray pt-8 pb-16">
@@ -32,16 +86,73 @@ const Checkout = () => {
               <div className="inputs">
                 <h2 className="text-xs text-primary uppercase tracking-ap-1 font-bold">Billing Details</h2>
                 <div className="grid md:grid-cols-2 gap-x-4">
-                  <TextBoxInput name="fullname" label="Name" type="text" placeholder="Alexei Ward" />
-                  <TextBoxInput name="email" label="Email Address" type="email" placeholder="alexei@mail.com" />
-                  <TextBoxInput name="phonenumber" label="Phone Number" type="text" placeholder="+1 202-555-0136" />
+                  <TextBoxInput 
+                    ref={nameRef} 
+                    name="fullname" 
+                    label="Name" 
+                    type="text" 
+                    placeholder="Alexei Ward" 
+                    validationCallback={nameValidation}
+                    errorMsg="Please enter a valid name."
+                  />
+                  <TextBoxInput 
+                    ref={emailRef} 
+                    name="email" 
+                    label="Email Address" 
+                    type="email" 
+                    placeholder="alexei@mail.com" 
+                    validationCallback={(value) => /\b[\w-]+@[\w-]+\w{2,4}\b/gi.test(value)}
+                    errorMsg="Please enter a valid email."
+                  />
+                  <TextBoxInput 
+                    ref={phoneNumberRef} 
+                    name="phonenumber" 
+                    label="Phone Number" 
+                    type="text" 
+                    placeholder="+1 202-555-0136" 
+                    validationCallback={(value) => /(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})/gi.test(value)}
+                    errorMsg="Please enter a valid phone number."
+                  />
                 </div>
                 <h2 className="text-xs text-primary uppercase tracking-ap-1 mt-8 font-bold">Shipping Info</h2>
                 <div className="grid md:grid-cols-2 gap-x-4">
-                  <TextBoxInput name="address" label="Your Address" type="text" placeholder="1137 Williams Avenue" classes="md:col-span-2" />
-                  <TextBoxInput name="zip" label="ZIP Code" type="number" placeholder="10001" />
-                  <TextBoxInput name="city" label="City" type="text" placeholder="New York" />
-                  <TextBoxInput name="country" label="Country" type="text" placeholder="United States" />
+                  <TextBoxInput 
+                    ref={addressRef} 
+                    name="address" 
+                    label="Your Address" 
+                    type="text" 
+                    placeholder="1137 Williams Avenue" 
+                    classes="md:col-span-2" 
+                    validationCallback={(value) => value.trim() !== ''}
+                    errorMsg="Please enter a valid address."
+                  />
+                  <TextBoxInput 
+                    ref={zipRef} 
+                    name="zip" 
+                    label="ZIP Code" 
+                    type="number" 
+                    placeholder="10001" 
+                    validationCallback={(value) => /[0-9]{5}(-[0-9]{4})?/g.test(value)}
+                    errorMsg="Please enter a valid zip code."
+                  />
+                  <TextBoxInput 
+                    ref={cityRef} 
+                    name="city" 
+                    label="City" 
+                    type="text" 
+                    placeholder="New York" 
+                    validationCallback={nameValidation}
+                    errorMsg="Please enter a valid city."
+                  />
+                  <TextBoxInput 
+                    ref={countryRef} 
+                    name="country" 
+                    label="Country" 
+                    type="text" 
+                    placeholder="United States" 
+                    validationCallback={nameValidation}
+                    errorMsg="Please enter a valid country."
+                  />
                 </div>
                 <h2 className="text-xs text-primary uppercase tracking-ap-1 mt-8 font-bold">Payment Details</h2>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -74,8 +185,24 @@ const Checkout = () => {
                   </div>
                   {paymentMethod === "E-money" && (
                     <Fragment>
-                      <TextBoxInput name="emoney-number" label="e-Money Number" type="number" placeholder="238521993" />
-                      <TextBoxInput name="emoney-pin" label="e-Money Pin" type="number" placeholder="6891" />
+                      <TextBoxInput 
+                        ref={emoneyRef} 
+                        name="emoney-number" 
+                        label="e-Money Number" 
+                        type="number" 
+                        placeholder="238521993" 
+                        validationCallback={(value) => /^(\d{9})$/g.test(value)}
+                        errorMsg="Please enter a valid e-Money number."
+                      />
+                      <TextBoxInput 
+                        ref={emoneyPinRef} 
+                        name="emoney-pin" 
+                        label="e-Money Pin" 
+                        type="number" 
+                        placeholder="6891" 
+                        validationCallback={(value) => /^(\d{4}|\d{6})$/g.test(value)}
+                        errorMsg="Please enter a valid e-Money pin."
+                      />
                     </Fragment>
                   )}
                   {paymentMethod === "Cash on Delivery" && (
@@ -121,6 +248,7 @@ const Checkout = () => {
                   <p className="uppercase font-bold text-primary">{currencyFormat(computedTotal)}</p>
                 </div>
                 <Button type="button" classes="my-4 text-white bg-primary lg:ml-0 hover:bg-secondary text-xs font-normal">Continue & Pay</Button>
+                {(!formIsValid && formSubmitted) && <p className='text-red-500 text-sm mt-4'>There may be one or more incorrect entries on your form. Please check again.</p> }
               </div>
             </div>
           </form>
