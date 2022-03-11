@@ -2,14 +2,16 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from '@firebase/firestore';
 import { getStorage } from "firebase/storage";
 
+console.log(process.env.REACT_APP_FIREBASE_API_KEY);
+
 const firebaseConfig = {
-  apiKey: "AIzaSyADjBeAT117mVy79-yzA1ygZEZl0LvKxik",
-  authDomain: "audiophile-fe-mentor.firebaseapp.com",
-  projectId: "audiophile-fe-mentor",
-  storageBucket: "audiophile-fe-mentor.appspot.com",
-  messagingSenderId: "254428975044",
-  appId: "1:254428975044:web:f79f6cd08c78dee45fde91",
-  measurementId: "G-WDS2BPQ67K"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
