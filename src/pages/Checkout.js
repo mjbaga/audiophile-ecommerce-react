@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import Form from "components/form/Form";
 import TextBoxInput from "components/form/TextBoxInput";
 import { Fragment, useState } from "react";
 import CODImage from "assets/images/shared/desktop/cod.svg";
