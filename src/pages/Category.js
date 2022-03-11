@@ -2,8 +2,10 @@ import Button from "components/common/Button";
 import ImageTextPair from "components/common/ImageTextPair";
 import LoadingSpinner from "components/layout/LoadingSpinner";
 import { Fragment, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getCategoryBySlug, getProductsByCat } from 'utils/Firebase-Api';
+import { closeOverlay } from "store/ui-slice";
 
 const Category = () => {
   const [category, setCategory] = useState({});
@@ -12,7 +14,11 @@ const Category = () => {
   const categorySlug = params.catSlug;
   document.title = category.name;
 
+  const dispatch = useDispatch();
+
   useEffect(()=> {
+    dispatch(closeOverlay())
+
     getCategoryBySlug(categorySlug).then((response) => {
       setCategory({ id: response.docs[0].id, ...response.docs[0].data() });
       return response.docs[0].ref;
@@ -22,7 +28,7 @@ const Category = () => {
       });
     });
 
-  }, [categorySlug]);
+  }, [categorySlug, dispatch]);
 
   return (
     <Fragment>
@@ -48,7 +54,7 @@ const Category = () => {
                     {product.new && <p className="uppercase text-primary tracking-overline text-xs">New Product</p>}
                     <h2 className="uppercase leading-10 text-xl my-2 md:my-8 tracking-ap-2 font-bold md:text-4xl md:leading-11 md:max-w-md md:mx-auto lg:ml-0">{product.name}</h2>
                     <p className="text-black opacity-50 my-2">{product.description}</p>
-                    <Button to={`/products/${product.slug}`} classes="my-4 text-white bg-primary mx-auto lg:ml-0 hover:bg-secondary">See product</Button>
+                    <Button to={`/products/${product.slug}`} classes="my-4 text-white bg-primary mx-auto lg:ml-0 hover:bg-secondary font-bold">See product</Button>
                   </ImageTextPair>
                 ))
               )}
