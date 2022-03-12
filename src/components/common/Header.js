@@ -42,7 +42,7 @@ const Header = () => {
           <NavItems
             navItems={categories}
             id="primary-navigation"
-            navId="primary-navigation-header"
+            navTitle="header navigation"
             classes="main-nav hidden lg:block order-2"
           />
           <button className="bg-transparent border-0 order-3 relative" onClick={toggleCartHandler}>

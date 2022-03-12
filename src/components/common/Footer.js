@@ -16,7 +16,8 @@ const Footer = () => {
           </Link>
           <NavItems
             navItems={categories}
-            navId="footer-navigation"
+            navTitle="footer navigation"
+            id="footer-nav"
             classes="footer-nav"
             menuClass="flex-col md:flex-row"
           />
