@@ -32,6 +32,7 @@ const Homepage = ({ title = "Audiophile" }) => {
       <HeroBanner item={heroItem} link="/products/xx99-mark-two-headphones" />
       <section className="my-4 lg:my-20">
         <div className="container mx-auto px-5 lg:px-0">
+          <h2 className="sr-only">Categories</h2>
           <ImageNav items={categories} />
         </div>
       </section>
@@ -62,9 +63,9 @@ const Homepage = ({ title = "Audiophile" }) => {
                 desktop: require('assets/images/home/desktop/image-speaker-zx7.jpg'),
                 tablet: require('assets/images/home/tablet/image-speaker-zx7.jpg'),
                 mobile: require('assets/images/home/mobile/image-speaker-zx7.jpg'),
-                title: 'ZX7 Speaker'
               }}
 
+              title='ZX7 Speaker'
               classes="w-full"
             />
           </div>
@@ -77,10 +78,9 @@ const Homepage = ({ title = "Audiophile" }) => {
               imageSet={{
                 desktop: require('assets/images/home/desktop/image-earphones-yx1.jpg'),
                 tablet: require('assets/images/home/tablet/image-earphones-yx1.jpg'),
-                mobile: require('assets/images/home/mobile/image-earphones-yx1.jpg'),
-                title: 'YX1 Earphones'
+                mobile: require('assets/images/home/mobile/image-earphones-yx1.jpg')
               }}
-
+              title="YX1 Earphones"
               classes="w-full grow rounded-lg overflow-hidden w-full sm:w-1/2"
             />
             <div className="grow flex flex-col py-8 gap-4 bg-darkgray rounded-lg px-8 w-full sm:w-1/2 justify-center lg:pl-32">

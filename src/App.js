@@ -15,7 +15,7 @@ const Product = lazyDelayed(import('pages/Product'));
 
 function App() {
   const dispatch = useDispatch();
-  const { menuIsActive, cartIsVisible } = useSelector((state) => state.ui);
+  const { mobileMenuIsActive, cartIsVisible } = useSelector((state) => state.ui);
 
   useEffect(()=> {
     dispatch(fetchCategories());
@@ -25,11 +25,11 @@ function App() {
     dispatch(closeOverlay());
   }
 
-  menuIsActive || cartIsVisible ? document.body.classList.add('fixed') : document.body.classList.remove('fixed');
+  mobileMenuIsActive || cartIsVisible ? document.body.classList.add('fixed') : document.body.classList.remove('fixed');
 
   return (
     <div className="App">
-      {(menuIsActive || cartIsVisible) && <div onClick={closeModalHandler} className="overlay fixed top-[90px] left-0 right-0 bottom-0 bg-black/50 w-full h-screen z-[100]"></div>}
+      {(mobileMenuIsActive || cartIsVisible) && <div onClick={closeModalHandler} className="overlay fixed top-[90px] left-0 right-0 bottom-0 bg-black/50 w-full h-screen z-[100]"></div>}
       <Suspense 
         fallback={
           <div className="fixed w-full h-screen top-0 left-0 right-0 bottom-0 bg-black/25">
